@@ -45,7 +45,7 @@ const Login = () => {
             <div className="divider">or</div>
             {/* social login */}
             <SocialLogin></SocialLogin>
-            <h2 className="text-center font-semibold mt-5">Have an account? <Link className="text-[#0F3DDE] hover:underline" to='/signUp'>SignUp</Link></h2>
+            <h2 className="text-center font-semibold mt-5">New here? <Link className="text-[#0F3DDE] hover:underline" to='/signUp'>SignUp</Link></h2>
           </div>
         </div>
       </div>
