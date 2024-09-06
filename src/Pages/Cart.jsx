@@ -2,11 +2,14 @@ import { useContext, useState } from "react";
 import { CartContext } from "../Provider/CartProvider";
 
 const Cart = () => {
-    const [increase,setIncrease]=useState();
-    console.log(increase)
+  const [increase, setIncrease] = useState();
+  console.log(increase);
   const { cart, updateQuantity } = useContext(CartContext);
-  //   handle quantity
-  
+  // calculate total price
+  const totalPrice = cart.reduce((acc, item) => {
+    return acc + parseFloat(item.offer_price) * parseFloat(item.quantity);
+  }, 0);
+
   return (
     <section className="mt-10">
       {/* <h2></h2> */}
@@ -25,14 +28,21 @@ const Cart = () => {
                   {/* quantity manage */}
                   <div className="flex flex-row items-center gap-3">
                     <span
-                    onClick={()=>updateQuantity(item._id,item.quantity-1)}
-                    className="text-2xl cursor-pointer">-</span>
+                      onClick={() =>
+                        updateQuantity(item._id, item.quantity - 1)
+                      }
+                      className="text-2xl cursor-pointer"
+                    >
+                      -
+                    </span>
                     <input
                       className="w-5 h-10 flex justify-center items-center"
                       value={item.quantity}
                     />
                     <span
-                      onClick={()=>updateQuantity(item._id,item.quantity+1)}
+                      onClick={() =>
+                        updateQuantity(item._id, item.quantity + 1)
+                      }
                       className="text-2xl cursor-pointer"
                     >
                       +
@@ -58,7 +68,7 @@ const Cart = () => {
           <div className="mt-10 p-4 space-y-4 bg-[#ECECEC] rounded-md text-[#656565]">
             <div className="flex justify-between">
               <h4 className="text-xl">Subtotal</h4>
-              <h4 className="text-xl">€</h4>
+              <h4 className="text-xl">€{totalPrice}</h4>
             </div>
             <div className="flex justify-between">
               <h4 className="text-xl">Shipping Fees</h4>
@@ -71,7 +81,7 @@ const Cart = () => {
             <hr className="border-2 border-white" />
             <div className="text-black font-bold text-2xl flex justify-between">
               <h2>Total</h2>
-              <h2>€</h2>
+              <h2>€{totalPrice}</h2>
             </div>
           </div>
           <button className="w-full text-center text-white bg-black mt-4 py-3 font-semibold rounded-md">
