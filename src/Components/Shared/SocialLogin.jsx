@@ -11,6 +11,9 @@ const SocialLogin = () => {
       .then((result) => {
         console.log(result.user);
         toast.success('login successfully')
+        setTimeout(() => {
+          navigate("/products");
+        }, 1000);
       })
       .catch((error) => {
         console.log(error);
