@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
 import { AuthContext } from "../../Provider/AuthProvider";
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navItems = (
     <>
       <NavLink>Home</NavLink>
@@ -12,7 +12,7 @@ const Navbar = () => {
       <NavLink>Category</NavLink>
       <NavLink>Custom</NavLink>
       <NavLink>Blog</NavLink>
-      <p>{user.email}</p>
+      <p>{user?.email}</p>
     </>
   );
   return (
@@ -59,8 +59,13 @@ const Navbar = () => {
         <div className="ml-5">
           {user ? (
             <div className="flex gap-2">
-              <p>{user.email}</p>
-              <button className="ml-3 rounded-full py-1 px-3 border border-[#1E99F5] bg-[#1E99F5] text-white">Logout</button>
+              <p>{user?.email}</p>
+              <button
+                onClick={logOut}
+                className="ml-3 rounded-full py-1 px-3 border border-[#1E99F5] bg-[#1E99F5] text-white"
+              >
+                Logout
+              </button>
             </div>
           ) : (
             <>

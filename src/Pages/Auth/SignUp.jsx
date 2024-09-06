@@ -9,14 +9,14 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 const SignUp = () => {
   const [checkbox, setCheckbox] = useState(false);
   const [showPassword, setShowPassword] = useState();
-  console.log(checkbox);
+  
   const { createUser } = useContext(AuthContext);
   // signUp email and password
   const handleSignUp = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+   
     // signUp
     createUser(email, password)
       .then((result) => {
