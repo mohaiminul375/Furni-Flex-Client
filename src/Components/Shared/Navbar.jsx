@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../../../src/assets/icon.png";
 import { NavLink } from "react-router-dom";
 import { IoCartOutline } from "react-icons/io5";
+import { AuthContext } from "../../Provider/AuthProvider";
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const navItems = (
     <>
       <NavLink>Home</NavLink>
@@ -10,6 +12,7 @@ const Navbar = () => {
       <NavLink>Category</NavLink>
       <NavLink>Custom</NavLink>
       <NavLink>Blog</NavLink>
+      <p>{user.email}</p>
     </>
   );
   return (
@@ -54,8 +57,22 @@ const Navbar = () => {
       <div className="navbar-end">
         <IoCartOutline className="text-3xl font-bold text-[#323232]" />
         <div className="ml-5">
-            <NavLink to='/login'>Login</NavLink>
-            <NavLink to='/signUp' className='ml-3 rounded-full p-2 border border-[#1E99F5] bg-[#1E99F5] text-white'>Sign Up</NavLink>
+          {user ? (
+            <div className="flex gap-2">
+              <p>{user.email}</p>
+              <button className="ml-3 rounded-full py-1 px-3 border border-[#1E99F5] bg-[#1E99F5] text-white">Logout</button>
+            </div>
+          ) : (
+            <>
+              <NavLink to="/login">Login</NavLink>
+              <NavLink
+                to="/signUp"
+                className="ml-3 rounded-full p-2 border border-[#1E99F5] bg-[#1E99F5] text-white"
+              >
+                Sign Up
+              </NavLink>
+            </>
+          )}
         </div>
       </div>
     </nav>
