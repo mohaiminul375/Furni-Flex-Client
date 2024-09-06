@@ -4,26 +4,52 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaCartPlus } from "react-icons/fa";
 import { IoMdMenu } from "react-icons/io";
+import { CartContext } from "../../Provider/CartProvider";
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const { cart } = useContext(CartContext);
   const navItems = (
     <>
-      <NavLink to='/' className={({isActive})=>(
-        isActive? 'text-base bg-[#F8F8F8] p-1 rounded-md':'text-base'
-      )}>Home</NavLink>
-      <NavLink className={({isActive})=>(
-        isActive? 'text-base bg-[#F8F8F8] p-1 rounded-md':'text-base'
-      )} to='/products'>Products</NavLink>
-      <NavLink to='/category' className={({isActive})=>(
-        isActive? 'text-base bg-[#F8F8F8] p-1 rounded-md':'text-base'
-      )}>Category</NavLink>
-      <NavLink to='/custom' className={({isActive})=>(
-        isActive? 'text-base bg-[#F8F8F8] p-1 rounded-md':'text-base'
-      )}>Custom</NavLink>
-      <NavLink to='/blog' className={({isActive})=>(
-        isActive? 'text-base bg-[#F8F8F8] p-1 rounded-md':'text-base'
-      )}>Blog</NavLink>
-      
+      <NavLink
+        to="/"
+        className={({ isActive }) =>
+          isActive ? "text-base bg-[#F8F8F8] p-1 rounded-md" : "text-base"
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        className={({ isActive }) =>
+          isActive ? "text-base bg-[#F8F8F8] p-1 rounded-md" : "text-base"
+        }
+        to="/products"
+      >
+        Products
+      </NavLink>
+      <NavLink
+        to="/category"
+        className={({ isActive }) =>
+          isActive ? "text-base bg-[#F8F8F8] p-1 rounded-md" : "text-base"
+        }
+      >
+        Category
+      </NavLink>
+      <NavLink
+        to="/custom"
+        className={({ isActive }) =>
+          isActive ? "text-base bg-[#F8F8F8] p-1 rounded-md" : "text-base"
+        }
+      >
+        Custom
+      </NavLink>
+      <NavLink
+        to="/blog"
+        className={({ isActive }) =>
+          isActive ? "text-base bg-[#F8F8F8] p-1 rounded-md" : "text-base"
+        }
+      >
+        Blog
+      </NavLink>
     </>
   );
   return (
@@ -31,7 +57,7 @@ const Navbar = () => {
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-          <IoMdMenu className="text-xl" />
+            <IoMdMenu className="text-xl" />
           </div>
           <ul
             tabIndex={0}
@@ -42,7 +68,7 @@ const Navbar = () => {
         </div>
         {/* logo */}
         <div className="flex items-center gap-2">
-          <img src={logo} alt="logo" className="w-7"/>
+          <img src={logo} alt="logo" className="w-7" />
           <h1 className="md:text-2xl font-bold">
             Furni<span className="text-[#1E99F5]">Flex</span>
           </h1>
@@ -50,12 +76,15 @@ const Navbar = () => {
       </div>
       {/* middle */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-10 items-center">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1 gap-10 items-center">
+          {navItems}
+        </ul>
       </div>
       <div className="navbar-end">
-       <NavLink to='/cart'>
-        <FaCartPlus className="text-xl md:text-3xl font-bold text-[#323232]" />
-        </NavLink> 
+        <NavLink className='relative' to="/cart">
+          <FaCartPlus className="text-xl md:text-3xl font-bold text-[#323232]" />
+          <span className="absolute bottom-0 bg-[#1E99F5] text-white rounded-full px-1 text-xs right-0">{cart.length}</span>
+        </NavLink>
         <div className="ml-5">
           {user ? (
             <div className="flex gap-2">

@@ -26,7 +26,7 @@ const ProductCard = ({ item }) => {
         <img
           className="object-cover w-full object-center"
           src={img}
-          alt="Shoes"
+          alt={name}
         />
       </figure>
       <div className="card-body">

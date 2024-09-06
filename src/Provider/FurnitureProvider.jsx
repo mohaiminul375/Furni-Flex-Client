@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { createContext } from "react";
 export const FurnitureContext = createContext();
+
 const FurnitureProvider = ({ children }) => {
   const { data: furniture, isLoading } = useQuery({
     queryFn: async () => {
@@ -11,7 +12,7 @@ const FurnitureProvider = ({ children }) => {
     queryKey: ["all-furniture"],
   });
   return (
-    <FurnitureContext.Provider value={{furniture,isLoading}}>
+    <FurnitureContext.Provider value={{ furniture, isLoading }}>
       {children}
     </FurnitureContext.Provider>
   );

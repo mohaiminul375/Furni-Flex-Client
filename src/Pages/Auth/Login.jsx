@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+
 const Login = () => {
   const [checkbox, setCheckbox] = useState(false);
   const [showPassword, setShowPassword] = useState();

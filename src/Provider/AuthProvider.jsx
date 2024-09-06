@@ -9,9 +9,10 @@ import {
   signOut,
 } from "firebase/auth";
 export const AuthContext = createContext(null);
+
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const googleProvider=new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
   // create user
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -20,17 +21,15 @@ const AuthProvider = ({ children }) => {
   const login = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
-// login with google
-const googleLogin=()=>{
-  return signInWithPopup(auth,googleProvider)
-}
-
-
+  // login with google
+  const googleLogin = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
 
   // logOut
-  const logOut=()=>{
+  const logOut = () => {
     return signOut(auth);
-  }
+  };
   //   handle user
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -45,7 +44,7 @@ const googleLogin=()=>{
     login,
     googleLogin,
     logOut,
-    user
+    user,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
