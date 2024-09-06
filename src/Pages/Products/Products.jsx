@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { FurnitureContext } from "../../Provider/FurnitureProvider";
 import { FadeLoader, PacmanLoader } from "react-spinners";
+import ProductCard from "./ProductCard";
 
 const Products = () => {
   const { furniture, isLoading } = useContext(FurnitureContext);
@@ -12,7 +13,16 @@ const Products = () => {
     );
   }
   console.log(furniture);
-  return <div></div>;
+  return (
+    <section>
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        {/* <p>{furniture.length}</p> */}
+        {furniture?.map((item) => (
+          <ProductCard key={item._id} item={item}></ProductCard>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default Products;
