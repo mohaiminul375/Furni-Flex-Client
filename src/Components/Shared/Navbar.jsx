@@ -70,7 +70,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <img src={logo} alt="logo" className="w-7" />
           <h1 className="md:text-2xl font-bold">
-            Furni<span className="text-[#1E99F5]">Flex</span>
+            Furni<span className="text-[#1E99F5] font-inter">Flex</span>
           </h1>
         </div>
       </div>

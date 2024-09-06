@@ -38,7 +38,7 @@ const SignUp = () => {
       });
   };
   return (
-    <section className="flex items-center justify-between">
+    <section className="flex items-center justify-between font-inter">
       <div className="w-full lg:w-1/2">
         <div className="bg-[#FAFAFA] md:w-3/4 md:mx-auto rounded-lg py-5 px-8">
           <div className="">

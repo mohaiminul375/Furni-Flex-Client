@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
 import { FaCartPlus } from "react-icons/fa";
 import { CartContext } from "../../Provider/CartProvider";
+import { AuthContext } from "../../Provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 
 const ProductCard = ({ item }) => {
+  const {user}=useContext(AuthContext);
   // cart function from context api
   const { addToCart, cart } = useContext(CartContext);
   const {
@@ -16,6 +19,9 @@ const ProductCard = ({ item }) => {
   } = item;
   console.log(cart);
   const handleAddToCart = (item) => {
+    if(!user){
+      return toast.error('please login')
+    }
     console.log(item);
     addToCart(item);
   };
@@ -50,6 +56,7 @@ const ProductCard = ({ item }) => {
           </button>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </div>
   );
 };
