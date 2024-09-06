@@ -9,14 +9,17 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import FurnitureProvider from "./Provider/FurnitureProvider";
+import CartProvider from "./Provider/CartProvider";
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <FurnitureProvider>
+        <CartProvider>
       <AuthProvider>
         <RouterProvider router={router} />
       </AuthProvider>
+      </CartProvider>
       </FurnitureProvider>
     </QueryClientProvider>
   </StrictMode>
