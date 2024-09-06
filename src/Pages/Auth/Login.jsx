@@ -1,27 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import chair from "../../../src/assets/Chair.png";
 import logo from "../../assets/icon.png";
 import SocialLogin from "../../Components/Shared/SocialLogin";
 import { useContext, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../../Provider/AuthProvider";
+import toast, { Toaster } from "react-hot-toast";
 const Login = () => {
   const [checkbox, setCheckbox] = useState(false);
   const [showPassword, setShowPassword] = useState();
   const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   // login with email and password
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log(email, password);
+    if (password.length < 6) {
+      return toast.error("password must be 6 character or more");
+    }
     // login
     login(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success("Login successfully");
+        setTimeout(() => {
+          navigate("/products");
+        }, 1000);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.message == "Firebase: Error (auth/invalid-credential).") {
+          toast.error("Incorrect email or password");
+        } else {
+          toast.error(error.message);
+        }
       });
   };
   return (
@@ -115,6 +128,7 @@ const Login = () => {
           </p>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </section>
   );
 };

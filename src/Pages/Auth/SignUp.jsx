@@ -5,25 +5,36 @@ import SocialLogin from "../../Components/Shared/SocialLogin";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
 
 const SignUp = () => {
   const [checkbox, setCheckbox] = useState(false);
   const [showPassword, setShowPassword] = useState();
-  
+
   const { createUser } = useContext(AuthContext);
   // signUp email and password
   const handleSignUp = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-   
+    if (password.length < 6) {
+      return toast.error("password must be 6 character or more");
+    }
     // signUp
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        toast.success("SignUp successfully");
+        setTimeout(() => {
+          navigate("/products");
+        }, 1000);
       })
       .catch((error) => {
-        console.log(error.message);
+        if (error?.message == "Firebase: Error (auth/email-already-in-use).") {
+          toast.error("Already have an account on this user");
+        } else {
+          toast.error(error?.message);
+        }
       });
   };
   return (
@@ -145,6 +156,7 @@ const SignUp = () => {
           </p>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={false} />
     </section>
   );
 };
