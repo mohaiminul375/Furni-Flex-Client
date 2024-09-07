@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../Provider/CartProvider";
+import { FaXmark } from "react-icons/fa6";
 
 const Cart = () => {
   const [increase, setIncrease] = useState();
   console.log(increase);
-  const { cart, updateQuantity } = useContext(CartContext);
+  const { cart, updateQuantity,removeFromCart } = useContext(CartContext);
   // calculate total price
   const totalPrice = cart.reduce((acc, item) => {
     return acc + parseFloat(item.offer_price) * parseFloat(item.quantity);
@@ -52,6 +53,11 @@ const Cart = () => {
                   <h3 className="text-[#434343] text-xl font-semibold">
                     {item.name}
                   </h3>
+                  <div className="flex justify-end flex-1">
+                    <FaXmark
+                    onClick={()=>removeFromCart(item._id)}
+                    className="text-2xl text-[#939393] cursor-pointer" />
+                  </div>
                 </div>
                 <div>
                   <h2 className="font-semibold text-end text-xl">

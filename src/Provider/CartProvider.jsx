@@ -20,17 +20,21 @@ const CartProvider = ({ children }) => {
   };
 
   // remove from cart
-  const removeFromCart = () => {};
+  const removeFromCart = (productId) => {
+    setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+  };
   // updateQuantity
   const updateQuantity = (productId, quantity) => {
-    setCart((prevCart) => 
-        prevCart.map(item =>
-            item._id == productId ? { ...item, quantity: quantity } : item
-        )
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item._id == productId ? { ...item, quantity: quantity } : item
+      )
     );
-};
+  };
   return (
-    <CartContext.Provider value={{ cart, addToCart,updateQuantity }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, updateQuantity, removeFromCart }}
+    >
       {children}
     </CartContext.Provider>
   );
