@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import google from "../../../src/assets/google-icon.png";
-import apple from "../../../src/assets/apple-icon.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { FaFacebook } from "react-icons/fa";
