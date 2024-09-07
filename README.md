@@ -4,8 +4,6 @@
 
 - Full Stack Developer Intern job task from IBOS
 
-# assignment_category_0001: Online Group-Study assignment
-
 # Run the Project Locally
 
 1. **Clone the Repository**:
