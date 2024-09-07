@@ -69,9 +69,9 @@ This is an E-commerce WebApp using React and Context API.
 - react hot toast
 
 # Back End
-[MIT](https://github.com/mohaiminul375/Furni-Flex-Server)
+[GitHub Backend](https://github.com/mohaiminul375/Furni-Flex-Server)
 - Node.js
 - Express.js
 - MongoDB
-- **Base API URL**: 
+# Base API URL 
   - `https://furni-flex-server-rho.vercel.app/furniture`
