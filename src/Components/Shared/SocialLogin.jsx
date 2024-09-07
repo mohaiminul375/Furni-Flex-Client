@@ -43,14 +43,14 @@ const SocialLogin = () => {
       <div className="flex justify-between flex-col gap-3 md:flex-row md:gap-0">
         <button
           onClick={handleGoogleLogin}
-          className="flex items-center justify-center gap-2 border border-gray-800 rounded-md bg-white font-semibold px-4 py-2"
+          className="flex items-center justify-center gap-2 border border-gray-800 rounded-md bg-white font-semibold px-2 py-2"
         >
           <img src={google} alt="" />
           <span>Sign in with Google</span>
         </button>
         <button
           onClick={handleFacebookLogin}
-          className="flex items-center justify-center gap-2 border border-gray-800 rounded-md bg-white font-semibold px-4 py-2"
+          className="flex items-center justify-center gap-2 border border-gray-800 rounded-md bg-white font-semibold px-2 py-2"
         >
           <FaFacebook className="text-xl text-[#0866FF]"/>
           <span>Sign in with Facebook</span>

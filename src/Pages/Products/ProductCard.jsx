@@ -27,7 +27,7 @@ const ProductCard = ({ item }) => {
   };
 
   return (
-    <div className="card bg-base-100 border border-[#F1F1F1] w-96 shadow-xl">
+    <div className="card bg-base-100 border border-[#F1F1F1] md:w-96 shadow-xl">
       <figure className="p-8">
         <img
           className="object-cover w-full object-center"

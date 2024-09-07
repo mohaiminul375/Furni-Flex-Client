@@ -6,7 +6,7 @@ export const FurnitureContext = createContext();
 const FurnitureProvider = ({ children }) => {
   const { data: furniture, isLoading } = useQuery({
     queryFn: async () => {
-      const { data } = await axios.get("http://localhost:3000/furniture");
+      const { data } = await axios.get("https://furni-flex-server-rho.vercel.app/furniture");
       return data;
     },
     queryKey: ["all-furniture"],
