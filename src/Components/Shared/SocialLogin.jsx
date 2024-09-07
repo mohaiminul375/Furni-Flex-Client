@@ -4,7 +4,9 @@ import apple from "../../../src/assets/apple-icon.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
 import { FaFacebook } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const SocialLogin = () => {
+  const navigate=useNavigate();
   const { googleLogin, facebookLogin } = useContext(AuthContext);
   // google login
   const handleGoogleLogin = () => {

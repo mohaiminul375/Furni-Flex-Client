@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-query";
 import FurnitureProvider from "./Provider/FurnitureProvider";
 import CartProvider from "./Provider/CartProvider";
+import { Toaster } from "react-hot-toast";
 const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")).render(
         <CartProvider>
       <AuthProvider>
         <RouterProvider router={router} />
+         <Toaster position="top-center" reverseOrder={false}/>
       </AuthProvider>
       </CartProvider>
       </FurnitureProvider>

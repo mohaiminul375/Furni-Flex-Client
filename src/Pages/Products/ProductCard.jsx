@@ -20,7 +20,7 @@ const ProductCard = ({ item }) => {
   console.log(cart);
   const handleAddToCart = (item) => {
     if(!user){
-      return toast.error('please login')
+      return toast.error('You must be logged in to add items to the cart.')
     }
     console.log(item);
     addToCart(item);
@@ -49,7 +49,7 @@ const ProductCard = ({ item }) => {
         <p className="text-[#838383] my-3 text-base">{description}</p>
         <div className="card-actions">
           <button
-            onClick={() => handleAddToCart(item)}
+            onClick={() => {handleAddToCart(item)}}
             className="w-full text-lg flex justify-center items-center font-semibold py-2 bg-black text-white rounded-md"
           >
             <FaCartPlus /> Add to cart

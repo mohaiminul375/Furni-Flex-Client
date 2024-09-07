@@ -3,8 +3,6 @@ import { CartContext } from "../Provider/CartProvider";
 import { FaXmark } from "react-icons/fa6";
 
 const Cart = () => {
-  const [increase, setIncrease] = useState();
-  console.log(increase);
   const { cart, updateQuantity,removeFromCart } = useContext(CartContext);
   // calculate total price
   const totalPrice = cart.reduce((acc, item) => {

@@ -1,10 +1,12 @@
 import React, { createContext, useState } from "react";
+import toast from "react-hot-toast";
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   // add to cart
   const addToCart = (product) => {
+    toast.success('add to cart successfully')
     setCart((prevCart) => {
       const productExisted = prevCart?.find((item) => item._id === product._id);
       if (productExisted) {
@@ -21,6 +23,7 @@ const CartProvider = ({ children }) => {
 
   // remove from cart
   const removeFromCart = (productId) => {
+    toast.success('deleted from cart successfully')
     setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
   };
   // updateQuantity
