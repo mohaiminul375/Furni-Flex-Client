@@ -25,7 +25,7 @@ const Cart = () => {
               >
                 <div className="flex gap-5">
                   {/* quantity manage */}
-                  <div className="flex flex-row items-center gap-3">
+                  <div className="flex flex-row items-center gap-1 md:gap-3">
                     <span
                       onClick={() =>
                         updateQuantity(item._id, item.quantity - 1)
@@ -47,7 +47,7 @@ const Cart = () => {
                       +
                     </span>
                   </div>
-                  <img className="w-32" src={item.img} alt="" />
+                  <img className="w-24 md:w-32" src={item.img} alt="" />
                   <h3 className="text-[#434343] text-xl font-semibold">
                     {item.name}
                   </h3>
